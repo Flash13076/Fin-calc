@@ -25,18 +25,21 @@ function StyledBoxWithInputsAndOutput() {
 
   const calculateCompoundInterest = () => {
     let value = parseInt(input1);
-    let percentage = parseFloat(input2 / 12);
     let time = parseInt(input3);
     let interval = parseInt(input4); //interval add
-    console.log(value, percentage, time);
-    setOutput((value * Math.pow(1 + percentage / 100, interval * time)).toFixed(2));
+    let percentage = parseFloat(input2 / input4);
+    setOutput(
+      (value * Math.pow(1 + percentage / 100, interval * time)).toFixed(2)
+    );
   };
+  
 
   const calculateSimpleInterest = () => {
     let value = parseInt(input1);
-    let percentage = parseFloat(input2 / 100);
     let time = parseInt(input3);
-    setOutput((value * (1 + percentage * time)).toFixed(2));
+    let interval = parseInt(input4);
+    let percentage = parseFloat(input2 / input4);
+    setOutput((value * (1 + (percentage / 100) * time)).toFixed(2));
   };
 
   const calculateFutureValue = () => {
@@ -170,6 +173,7 @@ function StyledBoxWithInputsAndOutput() {
         Retirement Fund Calculator
       </Typography>
       <TextField
+        fullWidth
         label="Desired monthly retirement income"
         variant="outlined"
         type="number"
@@ -178,6 +182,7 @@ function StyledBoxWithInputsAndOutput() {
         margin="normal"
       />
       <TextField
+        fullWidth
         label="Interest rate"
         variant="outlined"
         type="number"
@@ -186,6 +191,7 @@ function StyledBoxWithInputsAndOutput() {
         margin="normal"
       />
       <TextField
+        fullWidth
         label="Years till retirement"
         variant="outlined"
         type="number"
@@ -193,6 +199,16 @@ function StyledBoxWithInputsAndOutput() {
         onChange={(e) => setInput7(e.target.value)}
         margin="normal"
       />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { sm: "row", xs: "column" },
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "80%",
+          gap: 1,
+        }}
+      ></Box>
       <Button
         variant="contained"
         color="primary"
