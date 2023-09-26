@@ -26,7 +26,7 @@ function StyledBoxWithInputsAndOutput() {
   const calculateCompoundInterest = () => {
     let value = parseInt(input1);
     let time = parseInt(input3);
-    let interval = parseInt(input4); //interval add
+    let interval = parseInt(input4);
     let percentage = parseFloat(input2 / input4);
     setOutput(
       (value * Math.pow(1 + percentage / 100, interval * time)).toFixed(2)
